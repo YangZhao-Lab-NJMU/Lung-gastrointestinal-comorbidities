@@ -1,0 +1,17 @@
+########----- MAGMA
+###--------------- Step 1. Computing file "g1000_eur.genes.annot"
+./magma --annotate \
+--snp-loc g1000_eur.bim \
+--gene-loc NCBI37.3.gene.loc \
+--out ./g1000_eur
+
+
+
+###--------------- Step 2. gene-based analysis
+trait1=LC
+trait2=CRC
+Ns=271332
+${toolPath}/magma --bfile ./g1000_eur \
+--pval ./MAGMA-${trait1}_${trait2}_data N=${Ns} \
+--gene-annot ./g1000_eur.genes.annot \
+--out ./${trait1}_${trait2}-genebased

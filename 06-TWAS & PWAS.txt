@@ -1,0 +1,35 @@
+###---- TWAS
+weight_Path=./TWAS/GTEx_V8/weights
+LDref_Path=./TWAS/LDREF/
+Tissuelist=./GTEx_V8_tissue_list.txt
+
+trait=Asthma_GORD
+CHR=1
+Rscript ./FUSION.assoc_test.R \
+--sumstats ./TWASdata-${trait}.txt \
+--weights ${weight_Path}/GTExv8.EUR.${tissues}.pos \
+--weights_dir ${weight_Path}/ \
+--ref_ld_chr ${LDref_Path}/1000G.EUR. \
+--chr ${CHR} \
+--force_model enet \
+--out ./TWAS_${trait}_${tissues}_chr${CHR}.out
+
+
+
+###---- PWAS
+model_Path=./PWAS/Model/PWAS_EA
+LDref_Path=./PWAS/LDref/LDref/EUR
+trait=Asthma_GORD
+
+CHR=1
+Rscript ./PWAS.assoc_test.R \
+--sumstats ./PWASdata-${trait}.txt \
+--weights ./Plasma_Protein_EA_hg38.pos \
+--weights_dir ./Plasma_Protein_weights_EA/ \
+--ref_ld_chr ${LDref_Path}/chr \
+--force_model enet \
+--chr ${CHR} \
+--out ./PWAS-${trait}_chr${CHR}.out
+
+
+

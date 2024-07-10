@@ -1,0 +1,18 @@
+bfileRef=./ref_g1000
+partitionRef=./ref/partition/phess
+
+
+trait1=LC
+trait2=CRC
+Ns1=85716	
+Ns2=185616
+
+python3 supergnova.py ./${trait1}.sumstats.gz ./${trait2}.sumstats.gz \
+--N1 $Ns1 \
+--N2 $Ns2 \
+--bfile ${bfileRef}/g1000_eur_chr@ \
+--partition ${partitionRef}/fourier_ls-chr@.bed \
+--out ./Local_rg-${trait1}-${trait2}.txt
+
+
+

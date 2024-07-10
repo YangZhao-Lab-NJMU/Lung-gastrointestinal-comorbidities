@@ -1,0 +1,12 @@
+module add python/2.7
+
+trait1=LC
+trait2=CRC
+trait1_N=85716
+trait2_N=185616
+
+ldsc.py \
+--rg ${trait1}.sumstats.gz,${trait2}.sumstats.gz \
+--ref-ld-chr ./ref-LDSC/ldscores/ \
+--w-ld-chr ./ref-LDSC/ldscores/ \
+--out ./rg-LDSC-${trait1}-${trait2}

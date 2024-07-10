@@ -1,0 +1,17 @@
+#####----- MTAG
+module add python/2.7
+
+trait1=LC
+trait2=CRC
+trait1_file=${trait1}.txt
+trait2_file=${trait2}.txt
+python2.7 /public/home/wyq/tools/mtag/mtag.py  \
+--sumstats ./${trait1_file},./${trait2_file} \
+--out ./${trait1}-${trait2}_MTAG-max-FDR.txt \
+--n_min 0.0 \
+--std_betas \
+--stream_stdout \
+--perfect_gencov \ 
+--force \
+--median_z_cutoff 1 &
+--equal_h2 &  
